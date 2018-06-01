@@ -1,4 +1,4 @@
-import {AR} from 'nativescript-ar';
+import { AR } from "nativescript-ar";
 
 Object.assign(global, {
     SCNVector3Make(x, y, z) {
@@ -29,7 +29,7 @@ export class DroneSceneView extends AR {
     styleDrone(): void {
         let bodyMaterial = SCNMaterial.new();
         bodyMaterial.diffuse.contents = UIColor.colorWithRedGreenBlueAlpha(63/255, 86/255, 247/255, 1);
-        this.helicopterNode.geometry.materials = NSArray.arrayWithArray([bodyMaterial]);
+        this.helicopterNode.geometry.materials = NSArray.arrayWithArray([bodyMaterial] as any);
         //a node might have geometry of null
         // this.sceneView.scene.rootNode.geometry.materials = NSArray.arrayWithArray([bodyMaterial]);
         let bladeMaterial = SCNMaterial.new();

@@ -58,6 +58,7 @@ export class DroneSceneView extends AR {
     }
 
     moveDrone(x, y, z) {
+        __collect();
         SCNTransaction.begin();
         SCNTransaction.animationDuration = 0.5;
         this.helicopterNode.position = SCNVector3Make(x, y, z);

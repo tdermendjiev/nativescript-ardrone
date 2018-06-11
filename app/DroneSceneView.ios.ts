@@ -57,43 +57,10 @@ export class DroneSceneView extends AR {
         SCNTransaction.commit();
     }
 
-    moveLeft() {
+    moveDrone(x, y, z) {
         SCNTransaction.begin();
         SCNTransaction.animationDuration = 0.5;
-        this.helicopterNode.position = SCNVector3Make(this.helicopterNode.position.x - 0.5, this.helicopterNode.position.y, this.helicopterNode.position.z);
-        this.blade2Node.runAction(SCNAction.rotateByXYZDuration(0.3, -0.1, 0, 1.5));
-        this.blade1Node.runAction(SCNAction.rotateByXYZDuration(0.3, 0, 0, 1.5));
-        SCNTransaction.commit();
-        this.blade2Node.runAction(SCNAction.rotateByXYZDuration(-0.3, 0.1, 0, 0.25));
-        this.blade1Node.runAction(SCNAction.rotateByXYZDuration(-0.3, 0, 0, 0.25)) ;
-    }
-
-    moveRight() {
-        SCNTransaction.begin();
-        SCNTransaction.animationDuration = 0.5;
-        this.helicopterNode.position = SCNVector3Make(this.helicopterNode.position.x + 0.5, this.helicopterNode.position.y, this.helicopterNode.position.z);
-        this.blade2Node.runAction(SCNAction.rotateByXYZDuration(0.3, -0.1, 0, 1.5));
-        this.blade1Node.runAction(SCNAction.rotateByXYZDuration(0.3, 0, 0, 1.5));
-        SCNTransaction.commit();
-        this.blade2Node.runAction(SCNAction.rotateByXYZDuration(-0.3, 0.1, 0, 0.25));
-        this.blade1Node.runAction(SCNAction.rotateByXYZDuration(-0.3, 0, 0, 0.25));
-    }
-
-    moveForward() {
-        SCNTransaction.begin();
-        SCNTransaction.animationDuration = 0.5;
-        this.helicopterNode.position = SCNVector3Make(this.helicopterNode.position.x, this.helicopterNode.position.y, this.helicopterNode.position.z - 0.5);
-        this.blade2Node.runAction(SCNAction.rotateByXYZDuration(0.3, -0.1, 0, 1.5));
-        this.blade1Node.runAction(SCNAction.rotateByXYZDuration(0.3, 0, 0, 1.5));
-        SCNTransaction.commit();
-        this.blade2Node.runAction(SCNAction.rotateByXYZDuration(-0.3, 0.1, 0, 0.25));
-        this.blade1Node.runAction(SCNAction.rotateByXYZDuration(-0.3, 0, 0, 0.25));
-    }
-
-    moveBack() {
-        SCNTransaction.begin();
-        SCNTransaction.animationDuration = 0.5;
-        this.helicopterNode.position = SCNVector3Make(this.helicopterNode.position.x, this.helicopterNode.position.y, this.helicopterNode.position.z + 0.5);
+        this.helicopterNode.position = SCNVector3Make(x, y, z);
         this.blade2Node.runAction(SCNAction.rotateByXYZDuration(0.3, -0.1, 0, 1.5));
         this.blade1Node.runAction(SCNAction.rotateByXYZDuration(0.3, 0, 0, 1.5));
         SCNTransaction.commit();

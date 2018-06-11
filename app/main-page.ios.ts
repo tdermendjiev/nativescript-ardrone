@@ -10,7 +10,6 @@ export function pageLoaded(args: observable.EventData) {
 
   const slider = page.getViewById("heightSlider");
   slider.nativeView.transform = CGAffineTransformMakeRotation(Math.PI * 0.5);
-
 }
 
 function updateDistance(scene: any) {
@@ -24,9 +23,7 @@ function updateDistance(scene: any) {
 
 export function arLoaded(args: any): void {
   var scene = <DroneSceneView>args.object;
-
-  scene.setupDrone();
-  
+  scene.setupDrone(); 
 }
 
 export function onSliderLoaded(args: any): void {
@@ -52,23 +49,27 @@ function calculateDistanceFromCamera(scene, to) {
 
 export function moveForward(args: any) {
   let scene = args.object.parent.parent.parent;
-  scene.moveForward();
+  let dronePos = scene.helicopterNode.position
+  scene.move(dronePos.x, dronePos.y, dronePos.z + 0.5);
   updateDistance(scene);
 }
 
 export function moveBack(args: any) {
   let scene = args.object.parent.parent.parent;
-  scene.moveBack();
+  let dronePos = scene.helicopterNode.position
+  scene.move(dronePos.x, dronePos.y, dronePos.z - 0.5);
   updateDistance(scene);
 }
 
 export function moveLeft(args: any) {
   let scene = args.object.parent.parent.parent;
-  scene.moveLeft();
+  let dronePos = scene.helicopterNode.position
+  scene.move(dronePos.x - 0.5, dronePos.y, dronePos.z);
   updateDistance(scene);
 }
 export function moveRight(args: any) {
   let scene = args.object.parent.parent.parent;
-  scene.moveRight();
+  let dronePos = scene.helicopterNode.position
+  scene.move(dronePos.x + 0.5, dronePos.y, dronePos.z);
   updateDistance(scene);
 }

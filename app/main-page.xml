@@ -1,31 +1,22 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page" xmlns:DroneSceneView="./DroneSceneView">
   <StackLayout>
-    <DroneSceneView:DroneSceneView height="100%"
-        arLoaded="arLoaded" id="scene">
-        
-        <GridLayout columns="auto, *" rows="auto" width="100%"  class="slider" verticalAlignment="bottom">
-            
-            <Slider row="0" col="0" id="heightSlider" width="200" height="100" loaded="onSliderLoaded" value="0.5"  minValue="0" maxValue="1"/>
-            <GridLayout row="0" col="1" columns="50,50,50" rows="50,50,50" width="300" top="20">
-            <StackLayout row="0" col="1" tap="moveForward">
-                <Image src="~/arrow.png"></Image>
-            </StackLayout>
-            <StackLayout row="1" col="0" tap="moveLeft" id="leftArrow">
-                <Image src="~/arrow.png"></Image>
-            </StackLayout>
-            <Label   row="1" col="1" id="distanceLabel" textWrap="true"/>
-            <StackLayout row="1" col="2" tap="moveRight" id="rightArrow">
-                <Image src="~/arrow.png"></Image>
-            </StackLayout>
-            <StackLayout row="2" col="1" tap="moveBack" id="backArrow">
-                <Image src="~/arrow.png"></Image>
-            </StackLayout>
-            </GridLayout>
-        </GridLayout>
-
-    </DroneSceneView:DroneSceneView>
     <iOS>
-      
+        <DroneSceneView:DroneSceneView height="100%"
+            arLoaded="arLoaded" id="scene">     
+            
+            <GridLayout columns="auto, *" rows="auto" width="100%"  class="slider" verticalAlignment="bottom">
+                
+                <Slider row="0" col="0" id="heightSlider" width="200" height="100" loaded="onSliderLoaded" value="0.5"  minValue="0" maxValue="1"/>
+                <GridLayout row="0" col="1" columns="50,50,50" rows="50,50,50" width="300" top="20">
+                    <Image row="0" col="1" tap="moveForward" src="~/arrow.png"></Image>
+                    <Image row="1" col="0" tap="moveLeft" id="leftArrow" src="~/arrow.png"></Image>
+                    <Label row="1" col="1" id="distanceLabel" textWrap="true"/>
+                    <Image row="1" col="2" tap="moveRight" id="rightArrow" src="~/arrow.png"></Image>
+                    <Image row="2" col="1" tap="moveBack" id="backArrow" src="~/arrow.png"></Image>
+                </GridLayout>
+            </GridLayout>
+
+        </DroneSceneView:DroneSceneView>    
     </iOS>
   </StackLayout>
 </Page>

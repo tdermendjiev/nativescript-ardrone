@@ -23,6 +23,7 @@ function updateDistance(scene: any) {
 
 export function arLoaded(args: any): void {
   var scene = <DroneSceneView>args.object;
+  scene.sceneView.session.delegate = SessionDelegate.new();
   scene.setupDrone(); 
 }
 
@@ -50,26 +51,39 @@ function calculateDistanceFromCamera(scene, to) {
 export function moveForward(args: any) {
   let scene = args.object.parent.parent.parent;
   let dronePos = scene.helicopterNode.position
-  scene.move(dronePos.x, dronePos.y, dronePos.z + 0.5);
+  scene.moveDrone(dronePos.x, dronePos.y, dronePos.z + 0.5);
   updateDistance(scene);
 }
 
 export function moveBack(args: any) {
   let scene = args.object.parent.parent.parent;
   let dronePos = scene.helicopterNode.position
-  scene.move(dronePos.x, dronePos.y, dronePos.z - 0.5);
+  scene.moveDrone(dronePos.x, dronePos.y, dronePos.z - 0.5);
   updateDistance(scene);
 }
 
 export function moveLeft(args: any) {
   let scene = args.object.parent.parent.parent;
   let dronePos = scene.helicopterNode.position
-  scene.move(dronePos.x - 0.5, dronePos.y, dronePos.z);
+  scene.moveDrone(dronePos.x - 0.5, dronePos.y, dronePos.z);
   updateDistance(scene);
 }
 export function moveRight(args: any) {
   let scene = args.object.parent.parent.parent;
   let dronePos = scene.helicopterNode.position
-  scene.move(dronePos.x + 0.5, dronePos.y, dronePos.z);
+  scene.moveDrone(dronePos.x + 0.5, dronePos.y, dronePos.z);
   updateDistance(scene);
+}
+
+class SessionDelegate extends NSObject implements ARSessionDelegate {
+  static ObjCProtocols = [ARSessionDelegate];
+
+  static new(): SessionDelegate {
+    return <SessionDelegate>super.new();
+  }
+
+  sessionDidUpdateFrame(session, frame) {
+  
+  }
+
 }

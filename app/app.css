@@ -7,14 +7,7 @@
 #heightSlider {
   margin-top: 30;
 }
-#distanceLabel {
-  background-color: #3f56f7;
-  font-size: 15;
-  color: white;
-  border-radius: 5;
-  width: 100;
-  text-align: center;
-}
+
 #leftArrow {
   transform: rotate(270deg);
 }

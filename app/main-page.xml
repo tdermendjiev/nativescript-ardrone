@@ -10,7 +10,6 @@
                 <GridLayout row="0" col="1" columns="50,50,50" rows="50,50,50" width="300" top="20">
                     <Image row="0" col="1" tap="moveForward" src="~/arrow.png"></Image>
                     <Image row="1" col="0" tap="moveLeft" id="leftArrow" src="~/arrow.png"></Image>
-                    <Label row="1" col="1" id="distanceLabel" textWrap="true"/>
                     <Image row="1" col="2" tap="moveRight" id="rightArrow" src="~/arrow.png"></Image>
                     <Image row="2" col="1" tap="moveBack" id="backArrow" src="~/arrow.png"></Image>
                 </GridLayout>

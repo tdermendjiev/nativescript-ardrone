@@ -12,15 +12,6 @@ export function pageLoaded(args: observable.EventData) {
   slider.nativeView.transform = CGAffineTransformMakeRotation(Math.PI * 0.5);
 }
 
-function updateDistance(scene: any) {
-  let distanceLabel = scene.parent.getViewById("distanceLabel");
-  var distance = calculateDistanceFromCamera(scene, scene.helicopterNode);
-
-    if (distance && distanceLabel) {
-      distanceLabel.text = distance.toFixed(2);
-    }
-}
-
 export function arLoaded(args: any): void {
   var scene = <DroneSceneView>args.object;
   scene.sceneView.session.delegate = SessionDelegate.new();
@@ -38,41 +29,27 @@ export function onSliderLoaded(args: any): void {
   });
 }
 
-function calculateDistanceFromCamera(scene, to) {
-    var camera = scene.sceneView.session.currentFrame.camera;
-    var transform = camera.transform;
-    var dx = to.position.x - transform.columns[3][0];
-    var dy = to.position.y - transform.columns[3][1];
-    var dz = to.position.z - transform.columns[3][2];
-    var meters = Math.sqrt(dx * dx + dy * dy + dz * dz);
-    return meters;
-}
-
 export function moveForward(args: any) {
   let scene = args.object.parent.parent.parent;
   let dronePos = scene.helicopterNode.position
-  scene.moveDrone(dronePos.x, dronePos.y, dronePos.z + 0.5);
-  updateDistance(scene);
+  scene.moveDrone(dronePos.x, dronePos.y, dronePos.z - 0.5);
 }
 
 export function moveBack(args: any) {
   let scene = args.object.parent.parent.parent;
   let dronePos = scene.helicopterNode.position
-  scene.moveDrone(dronePos.x, dronePos.y, dronePos.z - 0.5);
-  updateDistance(scene);
+  scene.moveDrone(dronePos.x, dronePos.y, dronePos.z + 0.5);
 }
 
 export function moveLeft(args: any) {
   let scene = args.object.parent.parent.parent;
   let dronePos = scene.helicopterNode.position
   scene.moveDrone(dronePos.x - 0.5, dronePos.y, dronePos.z);
-  updateDistance(scene);
 }
 export function moveRight(args: any) {
   let scene = args.object.parent.parent.parent;
   let dronePos = scene.helicopterNode.position
   scene.moveDrone(dronePos.x + 0.5, dronePos.y, dronePos.z);
-  updateDistance(scene);
 }
 
 class SessionDelegate extends NSObject implements ARSessionDelegate {
